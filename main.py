@@ -1,8 +1,7 @@
-import discord, os, json, tokens
+import discord, tokens
 from discord.ext import commands
-Client = discord.Client()
 
-client = commands.Bot(
+bot = commands.Bot(
                     command_prefix=commands.when_mentioned,
                     status=discord.Status.dnd,
                     activity=discord.Activity(type=discord.ActivityType.watching, name='rickroll.com'),
@@ -12,8 +11,8 @@ client = commands.Bot(
                     intents=discord.Intents.default()
                     )
 
-client.load_extension('jishaku')
-client.load_extension('rickroll')
-client.rickroll = {}
-
-client.run(tokens.bot)
+if __name__ == "__main__":
+    bot.load_extension('jishaku')
+    bot.load_extension('rickroll')
+    bot.rickroll = {}
+    bot.run(tokens.bot)
